@@ -13,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.animee.data.room.AnimeDBRepository
 import com.example.animee.screens.animecreate.AnimeCreateScreen
 import com.example.animee.screens.animecreate.AnimeCreateViewModel
 import com.example.animee.ui.theme.AnimeeTheme
@@ -24,14 +23,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         //Init
-        AnimeDBRepository.initalizeDatabase(applicationContext)
+
 
         enableEdgeToEdge()
         setContent {
             AnimeeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(
-
                     ) {
                         AnimeCreateScreen(_animeCreateViewModel)
                     }

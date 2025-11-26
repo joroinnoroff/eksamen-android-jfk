@@ -1,10 +1,9 @@
+import com.example.animee.data.retrofit.AnimeApi
 import com.example.animee.data.retrofit.AnimeService
-import com.example.animee.data.retrofit.ApiAnime
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.collections.emptyList
 
 object AnimeAPIRepository {
     private val _okHttpClient = OkHttpClient.Builder()
@@ -24,20 +23,17 @@ object AnimeAPIRepository {
 
     private val _animeService = _retrofit.create(AnimeService::class.java);
 
+    suspend fun getAllAnimes() : List<AnimeApi>? {
+        try {
+            val response = _animeService.getAllAnime(1)
 
-
-    suspend fun getAnimesFromAPI() : List<ApiAnime> {
-        return try {
-            val response = _animeService.getAllAnime()
-            if (response.isSuccessful) {
-                response.body()?.data ?: emptyList()
-            } else {
-                emptyList()
+            return if (response.isSuccessful){
+                response.body()
+            }else{
+                null
             }
-        } catch (e: Exception) {
-            emptyList()
-            }
+        }catch (e: Exception){
+            return null
         }
-
-
+    }
 }
