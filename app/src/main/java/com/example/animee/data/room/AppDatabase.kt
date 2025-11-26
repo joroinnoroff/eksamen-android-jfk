@@ -5,11 +5,12 @@ import androidx.room.RoomDatabase
 
 
 @Database(
-    entities = [DbAnime::class, NewAnime::class],
+    entities = [ExistingAnime::class, NewAnime::class],
     version = 1,
     exportSchema = true
 )
 
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun animeDao() : AnimeDao
+    abstract fun animeDao() : NewAnimeDao
+
 }

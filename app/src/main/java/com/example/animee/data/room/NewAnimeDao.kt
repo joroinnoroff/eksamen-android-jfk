@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.OnConflictStrategy
 @Dao
-interface AnimeDao {
+interface NewAnimeDao {
     @Query("SELECT * FROM DbAnime")
     suspend fun getAll(): List<DbAnime>
 

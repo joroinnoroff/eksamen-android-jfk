@@ -16,9 +16,6 @@ import com.example.animee.components.AnimeItem
 import com.example.animee.data.UiAnime
 
 
-
-
-
 @Composable
 
 fun AnimeCreateScreen(animeCreateViewModel: AnimeCreateViewModel) {
