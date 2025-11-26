@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.animee.data.UiAnime
 
 import com.example.animee.data.room.AnimeDBRepository
-import com.example.animee.data.room.DbAnime
+
 import com.example.animee.data.toDbAnime
 import com.example.animee.data.toUiAnime
 
