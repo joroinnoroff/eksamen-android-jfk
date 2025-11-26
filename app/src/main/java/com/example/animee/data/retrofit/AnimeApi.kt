@@ -1,18 +1,21 @@
 package com.example.animee.data.retrofit
 
+import android.R
 import com.google.gson.annotations.SerializedName
 
-
+data class AnimeResponse(
+    val data: List<AnimeApi>
+)
 data class AnimeApi(
     val mal_id: Int,
-    @SerializedName("title_english")
+    @SerializedName("title")
     val englishTitle: String,
     @SerializedName("title_japanese")
     val japaneseTitle: String,
-    val score: Int,
+    val score: Double,
     val popularity: Int,
     val synopsis: String,
-    val image: Images
+    val images: Images
 )
 
 data class Images(
@@ -23,5 +26,3 @@ data class ImagesData(
     @SerializedName("image_url")
     val image: String
 )
-
-
