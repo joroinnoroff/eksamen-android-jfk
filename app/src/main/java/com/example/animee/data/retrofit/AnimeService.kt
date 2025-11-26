@@ -7,12 +7,12 @@ import retrofit2.http.Query
 interface AnimeService {
 
     @GET("anime")
-    suspend fun getAllAnime(@Query("page") page: Int =1): Response<AnimeResponse>
+    suspend fun getAllAnime(@Query("page") page: Int) : Response<AnimeResponse>
 
 
     @GET("anime/{id}")
     suspend fun getAnimeById(
         @Path("id") id: Int
-    ) : Response<ApiAnime>
+    ) : Response<AnimeApi>
 
 }
