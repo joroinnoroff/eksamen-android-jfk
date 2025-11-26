@@ -1,4 +1,5 @@
 import com.example.animee.data.retrofit.AnimeApi
+import com.example.animee.data.retrofit.AnimeResponse
 import com.example.animee.data.retrofit.AnimeService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,13 +22,14 @@ object AnimeAPIRepository {
         ).build()
 
 
-    private val _animeService = _retrofit.create(AnimeService::class.java);
+    private val _animeService = _retrofit.create(AnimeService::class.java)
 
-    suspend fun getAllAnimes() : List<AnimeApi>? {
+    suspend fun getAllAnimes() : AnimeResponse? {
         try {
             val response = _animeService.getAllAnime(1)
 
             return if (response.isSuccessful){
+
                 response.body()
             }else{
                 null
