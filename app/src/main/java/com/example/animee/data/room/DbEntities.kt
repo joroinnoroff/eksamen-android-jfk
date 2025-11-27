@@ -18,7 +18,7 @@ data class FavoriteAnime(
 data class NewAnime(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val name: String,
+    val title: String,
     val description: String?
 )
 
