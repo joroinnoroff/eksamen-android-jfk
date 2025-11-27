@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 
 class ShowAllAnimeViewModel : ViewModel() {
 
+
     private val _animes = MutableStateFlow<List<AnimeApi>>(
         emptyList()
     )
