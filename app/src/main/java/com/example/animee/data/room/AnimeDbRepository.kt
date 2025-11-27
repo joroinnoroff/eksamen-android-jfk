@@ -23,26 +23,25 @@ object AnimeDbRepository {
 
     suspend fun getAllFavoriteAnimes() : List<FavoriteAnime>{
         try{
-            Log.i("getAllFavoriteAnimeTry", "Fikk hentet Favoritter")
             return _favoriteAnimeDao.getAllFavoriteAnimes()
         }catch (e: Exception){
-            Log.d("getAllFavoriteAnimeCatch", e.toString())
+            Log.d("getAllFavoriteAnimeRepository", e.toString())
             return emptyList()
         }
     }
 
-    suspend fun getAllNewAnimes() : List<NewAnime>{
-        try{
-            Log.i("getAllFavoriteAnimeTry", "Fikk hentet Nye Animer")
+    suspend fun getAllNewAnimes() : List<NewAnime> {
+        try {
             return _newAnimeDao.getAllNewAnimes()
-        }catch (e: Exception){
-            Log.d("getAllNewAnimeCatch", e.toString())
+        } catch (e: Exception) {
+            Log.d("getAllNewAnimeRepository", e.toString())
             return emptyList()
         }
+    }
 
-        suspend fun addFavoriteAnimeFromApi(anime: AnimeApi) {
-            try {
-                withContext(Dispatchers.IO) {//dispatcher gjør så tyngre handlinger kjører i bakgrunnen
+    suspend fun addFavoriteAnimeFromApi(anime: AnimeApi) {
+        try {
+            withContext(Dispatchers.IO) {//dispatcher gjør så tyngre handlinger kjører i bakgrunnen
                 val favorite = FavoriteAnime( //henter animer fra api og legger det i favorite
                     id = anime.id,
                     englishTitle = anime.englishTitle,
@@ -52,9 +51,35 @@ object AnimeDbRepository {
                 )
                 _favoriteAnimeDao.insertFavoriteAnime(favorite)
             }
-            }catch (e: Exception){
-                Log.e("FavoriteInsert", "Kunne ikke lagre favoritt", e)
-            }
+        }catch (e: Exception){
+                Log.e("FavoriteInsertRepository", "Kunne ikke lagre favoritt", e)
         }
     }
+
+    suspend fun insertNewAnime(newAnime: NewAnime) : Long{
+        try {
+            return _newAnimeDao.insertNewAnime(newAnime)
+        }catch (e: Exception){
+            Log.e("insertNewAnime", "feil ved posting til db", e)
+            return -1L // Databasen vil returnere -1L hvis det går galt under lagring
+        }
+    }
+
+    suspend fun deleteNewAnimeById(id: Int) {
+        try {
+            _newAnimeDao.deleteNewAnimeById(id)
+        } catch (e: Exception) {
+            Log.e("NewAnimeRepository", "Feil ved sletting av anime med id=$id")
+        }
+    }
+
+    suspend fun updateNewAnime(newAnime: NewAnime) {
+        try {
+            _newAnimeDao.updateNewAnime(newAnime)
+        } catch (e: Exception) {
+            Log.e("NewAnimeRepository", "Kunne ikke oppdatere anime", e)
+        }
+    }
+
+    // Trenger en getnewAnimeOnId funkjson
 }
