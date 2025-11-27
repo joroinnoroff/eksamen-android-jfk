@@ -16,6 +16,7 @@ fun NewAnimeItem(
     Column {
         Text(newAnime.title)
         Text(newAnime.description.toString())
+<<<<<<< HEAD
 
         Row() {
             Button(
@@ -29,5 +30,7 @@ fun NewAnimeItem(
                 Text("Slett")
             }
         }
+=======
+>>>>>>> 7f1f32d (saving)
     }
 }

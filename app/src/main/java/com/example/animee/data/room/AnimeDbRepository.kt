@@ -82,4 +82,12 @@ object AnimeDbRepository {
     }
 
     // Trenger en getnewAnimeOnId funkjson
+    suspend fun getNewAnimeById(id: Int): NewAnime?{
+        try {
+            return _newAnimeDao.getNewAnimeById(id)
+        } catch (e: Exception) {
+            Log.e("NewAnimeRepository", "Kunne ikke hente anime med id=$id", e)
+            return null
+        }
+    }
 }

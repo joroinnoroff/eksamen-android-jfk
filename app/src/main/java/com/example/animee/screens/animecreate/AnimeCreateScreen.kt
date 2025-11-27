@@ -50,7 +50,7 @@ fun AnimeCreateScreen(
             onClick = {
                 if (title.isNotEmpty() && description.isNotEmpty()) {
                     animeCreateViewModel.insertNewAnime(
-                        NewAnime(title = title, description = description)
+                        NewAnime(name = title, description = description)
                     )
                 }
             }

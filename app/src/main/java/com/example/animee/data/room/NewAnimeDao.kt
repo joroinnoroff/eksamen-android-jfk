@@ -11,6 +11,10 @@ interface NewAnimeDao {
     @Query("SELECT * FROM new_anime")
     suspend fun getAllNewAnimes() : List<NewAnime>
 
+    @Query("SELECT * FROM new_anime WHERE id = :id LIMIT 1")
+    suspend fun getNewAnimeById(id: Int): NewAnime?
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE) // overskriver mulige problemer med ider
     suspend fun insertNewAnime(newAnime: NewAnime) : Long
 }
