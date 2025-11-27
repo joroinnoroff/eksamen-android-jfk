@@ -7,8 +7,7 @@ data class AnimeResponse(
     val data: List<AnimeApi>
 )
 data class AnimeApi(
-    @SerializedName("mal_id")
-    val id: Int,
+    val mal_id: Int,
     @SerializedName("title")
     val englishTitle: String,
     @SerializedName("title_japanese")
