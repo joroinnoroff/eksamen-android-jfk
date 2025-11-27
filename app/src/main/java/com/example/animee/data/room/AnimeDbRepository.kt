@@ -60,6 +60,7 @@ object AnimeDbRepository {
         try {
             return _newAnimeDao.insertNewAnime(newAnime)
         }catch (e: Exception){
+            Log.e("insertNewAnime", "feil ved posting til db", e)
             return -1L // Databasen vil returnere -1L hvis det går galt under lagring
         }
     }
@@ -79,4 +80,6 @@ object AnimeDbRepository {
             Log.e("NewAnimeRepository", "Kunne ikke oppdatere anime", e)
         }
     }
+
+    // Trenger en getnewAnimeOnId funkjson
 }

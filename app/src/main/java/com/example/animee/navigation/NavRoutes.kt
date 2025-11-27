@@ -17,6 +17,11 @@ sealed class NavRoutes {
     object AnimeCreateRoute : NavRoutes()
 
     @Serializable
+    data class AnimeCreateDetailsRoute(
+        val newAnimeId: Int
+    ) : NavRoutes()
+
+    @Serializable
     data class AnimeDetailsRoute(
         val animeId: Int
     ) : NavRoutes()

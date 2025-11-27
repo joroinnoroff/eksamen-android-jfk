@@ -8,15 +8,24 @@ import androidx.compose.runtime.Composable
 import com.example.animee.data.room.NewAnime
 
 @Composable
-fun NewAnimeItem(newAnime: NewAnime){
+fun NewAnimeItem(
+    newAnime: NewAnime,
+    editAnime: () -> Unit,
+    deleteAnime: () -> Unit
+){
     Column {
         Text(newAnime.title)
         Text(newAnime.description.toString())
+
         Row() {
-            Button() {
+            Button(
+                editAnime
+            ) {
                 Text("Rediger")
             }
-            Button() {
+            Button(
+                deleteAnime
+            ) {
                 Text("Slett")
             }
         }
