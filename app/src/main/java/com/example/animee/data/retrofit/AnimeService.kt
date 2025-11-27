@@ -15,4 +15,5 @@ interface AnimeService {
         @Path("id") id: Int
     ) : Response<AnimeApi>
 
+
 }

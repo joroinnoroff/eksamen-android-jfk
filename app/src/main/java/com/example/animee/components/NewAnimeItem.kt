@@ -12,13 +12,5 @@ fun NewAnimeItem(newAnime: NewAnime){
     Column {
         Text(newAnime.title)
         Text(newAnime.description.toString())
-        Row() {
-            Button() {
-                Text("Rediger")
-            }
-            Button() {
-                Text("Slett")
-            }
-        }
     }
 }

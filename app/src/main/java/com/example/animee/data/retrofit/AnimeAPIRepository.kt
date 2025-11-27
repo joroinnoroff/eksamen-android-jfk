@@ -26,11 +26,10 @@ object AnimeAPIRepository {
 
 
     suspend fun getAllAnimes() : AnimeResponse? {
-        try {
+        return try {
             val response = _animeService.getAllAnime(1)
 
-            return if (response.isSuccessful){
-
+             if (response.isSuccessful){
                 response.body()
             }else{
                 null
@@ -39,5 +38,4 @@ object AnimeAPIRepository {
             return null
         }
     }
-
 }
