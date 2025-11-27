@@ -1,3 +1,4 @@
+import android.util.Log
 import com.example.animee.data.retrofit.AnimeApi
 import com.example.animee.data.retrofit.AnimeResponse
 import com.example.animee.data.retrofit.AnimeService
@@ -35,6 +36,22 @@ object AnimeAPIRepository {
                 null
             }
         }catch (e: Exception){
+            return null
+        }
+    }
+
+
+
+
+    suspend fun getAnimeById(id: Int ) : AnimeApi? {
+       return try {
+            val response = _animeService.getAnimeById(id)
+
+            if (response.isSuccessful) {
+                response.body()?.data
+            } else null
+        } catch (e: Exception) {
+            Log.d("catch getbyID", e.message.toString())
             return null
         }
     }

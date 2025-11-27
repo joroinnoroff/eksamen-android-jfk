@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName
 data class AnimeResponse(
     val data: List<AnimeApi>
 )
+data class AnimeSingleResponse(
+    val data: AnimeApi
+)
 data class AnimeApi(
     @SerializedName("mal_id")
     val id: Int,

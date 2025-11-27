@@ -24,7 +24,7 @@ fun ShowAllAnimeScreen(
                 AnimeListItem(
                     anime,
                     showDetails = {
-                        navController.navigate(NavRoutes.AnimeDetailsRoute(anime.mal_id))
+                        navController.navigate(NavRoutes.AnimeDetailsRoute(anime.id))
                     }
                 )
             }
