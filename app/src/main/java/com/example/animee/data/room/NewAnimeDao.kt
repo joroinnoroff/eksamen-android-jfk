@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface NewAnimeDao {
@@ -13,4 +14,10 @@ interface NewAnimeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE) // overskriver mulige problemer med ider
     suspend fun insertNewAnime(newAnime: NewAnime) : Long
+
+    @Query("DELETE FROM new_anime WHERE id = :newAnimeId")
+    suspend fun deleteNewAnimeById(newAnimeId: Int)
+
+    @Update
+    suspend fun updateNewAnime(newAnime: NewAnime)
 }

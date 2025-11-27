@@ -24,6 +24,7 @@ object AnimeAPIRepository {
 
     private val _animeService = _retrofit.create(AnimeService::class.java)
 
+
     suspend fun getAllAnimes() : AnimeResponse? {
         try {
             val response = _animeService.getAllAnime(1)
@@ -38,4 +39,5 @@ object AnimeAPIRepository {
             return null
         }
     }
+
 }
