@@ -1,19 +1,66 @@
 package com.example.animee.screens.homescreen
 
+import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowColumn
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.unit.dp
 import com.example.animee.components.AnimeItem
+import com.example.animee.components.SimpleAnimeItem
 
 @Composable
 fun HomeScreen(homeViewModel: HomeViewModel){
 
 
+    //Sorterer baser på popularitet, score som vi henter fra apiet
     val allAnimes by homeViewModel.animes.collectAsState()
+    val allAnimesByScore = allAnimes.sortedByDescending { it.score }
+    val allAnimesByPopularity = allAnimes.sortedByDescending { it.popularity }
 
-    LazyColumn {
-        items(allAnimes){ anime -> AnimeItem(anime)}
+
+
+
+    val lazyListState = rememberLazyListState()
+
+
+    LazyColumn() {
+
+        item {
+
+        }
+
+        item {
+            LazyRow(
+
+            ) {
+                items(allAnimesByScore) { anime -> SimpleAnimeItem(anime) }
+            }
+        }
+        item {
+            LazyRow(
+            ) {
+                items(allAnimesByPopularity) { anime -> SimpleAnimeItem(anime) }
+            }
+        }
+
+        item {
+
+        FlowColumn() {
+            allAnimes.forEach { anime ->
+                SimpleAnimeItem(anime)
+            }
+        }
+        }
+
     }
 }
