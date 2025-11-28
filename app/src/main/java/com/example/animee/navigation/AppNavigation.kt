@@ -153,7 +153,8 @@ fun AppNavigation(
                     AnimeCreateDetailsScreen(
                         animeCreateDetailsViewModel,
                         navController,
-                        args.newAnimeId
+                        args.newAnimeId,
+
                     )
                 }
 

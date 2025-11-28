@@ -16,9 +16,9 @@ fun AnimeCreateDetailsScreen(
 ) {
     val newAnime = animeCreateDetailsViewModel.newAnime.collectAsState()
 
-//    LaunchedEffect(Unit) {
-//        animeCreateDetailsViewModel.setNewAnime(newAnimeId)
-//    }
+    LaunchedEffect(Unit) {
+        animeCreateDetailsViewModel.setNewAnime(newAnimeId)
+    }
 
     Column() {
         Text("New anime details screen")
@@ -26,8 +26,11 @@ fun AnimeCreateDetailsScreen(
             NewAnimeItem(
                 anime,
                 deleteAnime = {
-                    animeCreateDetailsViewModel.deleteNewAnime(anime.id)
-                    navController.popBackStack()
+                    animeCreateDetailsViewModel.deleteNewAnime(anime.id, onDone = {
+                        navController.popBackStack()
+
+                    })
+
                 },
                 editAnime = {}
             )

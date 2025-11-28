@@ -16,15 +16,17 @@ class AnimeCreateDetailsViewModel : ViewModel() {
 
     val newAnime = _newAnimeDetails.asStateFlow()
 
-//    fun setNewAnime(newAnimeId: Int) {
-//        viewModelScope.launch {
-//            _newAnimeDetails.value = AnimeDbRepository.getnewAnimeOnId(newAnimeId)
-//        }
-//    }
+    fun setNewAnime(newAnimeId: Int) {
+        viewModelScope.launch {
+            _newAnimeDetails.value = AnimeDbRepository.getNewAnimeById(newAnimeId)
+        }
+    }
 
-    fun deleteNewAnime(newAnimeId: Int) {
+    fun deleteNewAnime(newAnimeId: Int, onDone: () ->Unit) {
         viewModelScope.launch {
             AnimeDbRepository.deleteNewAnimeById(newAnimeId)
+            _newAnimeDetails.value = null
+            onDone()
         }
     }
 

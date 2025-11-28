@@ -5,13 +5,15 @@ import android.util.Log
 import androidx.room.Room
 import com.example.animee.data.retrofit.AnimeApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 object AnimeDbRepository {
     private lateinit var _appDatabase: AppDatabase
 
-    private val _newAnimeDao by lazy { _appDatabase.newAnimeDao() }
-    private val _favoriteAnimeDao by lazy { _appDatabase.favoriteAnimeDao() }
+    private lateinit var _newAnimeDao: NewAnimeDao
+    private lateinit var _favoriteAnimeDao: FavoriteAnimeDao
+
 
     fun initializeDatabase(context: Context) {
         _appDatabase = Room.databaseBuilder(
@@ -19,7 +21,12 @@ object AnimeDbRepository {
             klass = AppDatabase::class.java,
             name = "Animes"
         ).build()
+
+        _newAnimeDao = _appDatabase.newAnimeDao()
+        _favoriteAnimeDao = _appDatabase.favoriteAnimeDao()
     }
+
+    fun getNewAnimesFlow(): Flow<List<NewAnime>> = _newAnimeDao.getAllNewAnimes()
 
     suspend fun getAllFavoriteAnimes() : List<FavoriteAnime>{
         try{
@@ -67,7 +74,7 @@ object AnimeDbRepository {
 
     suspend fun deleteNewAnimeById(id: Int) {
         try {
-            _newAnimeDao.deleteNewAnimeById(id)
+            _newAnimeDao.deleteNewAnime(id)
         } catch (e: Exception) {
             Log.e("NewAnimeRepository", "Feil ved sletting av anime med id=$id")
         }

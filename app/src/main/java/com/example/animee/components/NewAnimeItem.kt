@@ -14,9 +14,9 @@ fun NewAnimeItem(
     deleteAnime: () -> Unit
 ){
     Column {
-        Text(newAnime.title)
+        Text(newAnime.name)
         Text(newAnime.description.toString())
-<<<<<<< HEAD
+
 
         Row() {
             Button(
@@ -30,7 +30,6 @@ fun NewAnimeItem(
                 Text("Slett")
             }
         }
-=======
->>>>>>> 7f1f32d (saving)
+
     }
 }
