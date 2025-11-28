@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.room.Room
 import com.example.animee.data.retrofit.AnimeApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 object AnimeDbRepository {
@@ -12,12 +13,16 @@ object AnimeDbRepository {
     private val _newAnimeDao by lazy { _appDatabase.newAnimeDao() }
     private val _favoriteAnimeDao by lazy { _appDatabase.favoriteAnimeDao() }
 
+    fun getAllNewAnimes(): Flow<List<NewAnime>> {
+        return _newAnimeDao.getAllNewAnimes()
+    }
     fun initializeDatabase(context: Context) {
         _appDatabase = Room.databaseBuilder(
             context = context,
             klass = AppDatabase::class.java,
             name = "Animes"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
 
     }
 
@@ -31,14 +36,8 @@ object AnimeDbRepository {
         }
     }
 
-    suspend fun getAllNewAnimes() : List<NewAnime> {
-        try {
-            return _newAnimeDao.getAllNewAnimes()
-        } catch (e: Exception) {
-            Log.d("getAllNewAnimeRepository", e.toString())
-            return emptyList()
-        }
-    }
+
+
 
     suspend fun addFavoriteAnimeFromApi(anime: AnimeApi) {
         try {

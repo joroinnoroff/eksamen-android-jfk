@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [FavoriteAnime::class, NewAnime::class],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 

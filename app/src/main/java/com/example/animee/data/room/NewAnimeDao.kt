@@ -5,13 +5,14 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 
 @Dao
 interface NewAnimeDao {
 
     @Query("SELECT * FROM new_anime")
-    suspend fun getAllNewAnimes() : List<NewAnime>
+    fun getAllNewAnimes(): Flow<List<NewAnime>>
 
     @Query("SELECT * FROM new_anime WHERE id = :id LIMIT 1")
     suspend fun getNewAnimeById(id: Int): NewAnime?
