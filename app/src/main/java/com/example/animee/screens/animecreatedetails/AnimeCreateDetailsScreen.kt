@@ -26,13 +26,16 @@ fun AnimeCreateDetailsScreen(
             NewAnimeItem(
                 anime,
                 deleteAnime = {
-                    animeCreateDetailsViewModel.deleteNewAnime(anime.id, onDone = {
+                    animeCreateDetailsViewModel.deleteNewAnime(newAnimeId, onDone = {
                         navController.popBackStack()
 
                     })
 
                 },
-                editAnime = {}
+                editAnime = {updateAnime ->
+                    animeCreateDetailsViewModel.updateNewAnime(updateAnime)
+                    navController.popBackStack()
+                }
             )
         }
     }
