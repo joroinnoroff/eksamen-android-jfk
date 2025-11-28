@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -35,7 +36,8 @@ fun AnimeCreateScreen(
     }
 
     Column() {
-        Text("Ny anime")
+        Text("Ny anime",
+            style = MaterialTheme.typography.headlineLarge)
         TextField(
             value = title,
             onValueChange = { title = it },

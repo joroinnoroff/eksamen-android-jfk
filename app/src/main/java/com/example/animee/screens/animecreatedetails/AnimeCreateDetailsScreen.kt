@@ -1,6 +1,7 @@
 package com.example.animee.screens.animecreatedetails
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,7 +22,8 @@ fun AnimeCreateDetailsScreen(
     }
 
     Column() {
-        Text("New anime details screen")
+        Text("New anime details screen",
+            style = MaterialTheme.typography.headlineLarge)
         newAnime.value?.let { anime ->
             NewAnimeItem(
                 anime,

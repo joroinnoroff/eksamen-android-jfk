@@ -83,7 +83,7 @@ object AnimeDbRepository {
         }
     }
 
-    // Trenger en getnewAnimeOnId funkjson
+    
     suspend fun getNewAnimeById(id: Int): NewAnime?{
         try {
             return _newAnimeDao.getNewAnimeById(id)

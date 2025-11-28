@@ -17,6 +17,10 @@ class AnimeDetailsViewModel() : ViewModel() {
 
     val anime = _animeDetail.asStateFlow()
 
-
+    fun setAnimeDetails(id: Int) {
+        viewModelScope.launch {
+            _animeDetail.value = AnimeAPIRepository.getAnimeById(id)
+        }
+    }
 
 }
