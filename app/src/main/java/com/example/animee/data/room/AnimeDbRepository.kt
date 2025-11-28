@@ -5,12 +5,10 @@ import android.util.Log
 import androidx.room.Room
 import com.example.animee.data.retrofit.AnimeApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 object AnimeDbRepository {
     private lateinit var _appDatabase: AppDatabase
-
     private val _newAnimeDao by lazy { _appDatabase.newAnimeDao() }
     private val _favoriteAnimeDao by lazy { _appDatabase.favoriteAnimeDao() }
 
@@ -21,11 +19,7 @@ object AnimeDbRepository {
             name = "Animes"
         ).build()
 
-        _newAnimeDao = _appDatabase.newAnimeDao()
-        _favoriteAnimeDao = _appDatabase.favoriteAnimeDao()
     }
-
-    fun getNewAnimesFlow(): Flow<List<NewAnime>> = _newAnimeDao.getAllNewAnimes()
 
     suspend fun getAllFavoriteAnimes() : List<FavoriteAnime>{
         try{
