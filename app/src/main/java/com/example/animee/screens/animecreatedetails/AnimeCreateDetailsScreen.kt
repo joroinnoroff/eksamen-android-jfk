@@ -32,7 +32,9 @@ fun AnimeCreateDetailsScreen(
                     })
 
                 },
-                editAnime = {}
+                editAnime = {updateAnime ->
+                    animeCreateDetailsViewModel.updateNewAnime(updateAnime)
+                }
             )
         }
     }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.animee.data.room.AnimeDbRepository
 import com.example.animee.data.room.NewAnime
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -22,6 +23,13 @@ class AnimeCreateDetailsViewModel : ViewModel() {
         }
     }
 
+    fun updateNewAnime(updateAnime: NewAnime) {
+        viewModelScope.launch(Dispatchers.IO) {
+            AnimeDbRepository.updateNewAnime(updateAnime)
+            _newAnimeDetails.value = updateAnime
+
+        }
+    }
     fun deleteNewAnime(newAnimeId: Int, onDone: () ->Unit) {
         viewModelScope.launch {
             AnimeDbRepository.deleteNewAnimeById(newAnimeId)

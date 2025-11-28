@@ -65,6 +65,8 @@ object AnimeDbRepository {
         }
     }
 
+
+
     suspend fun deleteNewAnimeById(id: Int) {
         try {
             _newAnimeDao.deleteNewAnime(id)
