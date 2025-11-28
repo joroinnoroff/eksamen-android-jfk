@@ -22,7 +22,7 @@ class SearchAnimeViewModel : ViewModel() {
     val error = _error.asStateFlow()
     fun setAnime(id: Int) {
         viewModelScope.launch {
-          val result = AnimeAPIRepository.getAnimeById(id)
+            val result = AnimeAPIRepository.getAnimeById(id)
             if (result != null){
                 _anime.value = result
                 _error.value = null

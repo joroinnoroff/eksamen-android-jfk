@@ -21,7 +21,7 @@ fun SearchAnimeScreen(
     searchAnimeViewModel: SearchAnimeViewModel) {
 
     val error = searchAnimeViewModel.error.collectAsState()
-   val anime = searchAnimeViewModel.anime.collectAsState()
+    val anime = searchAnimeViewModel.anime.collectAsState()
     var id by remember { mutableStateOf("")
     }
 
