@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.room.Room
 import com.example.animee.data.retrofit.AnimeApi
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 object AnimeDbRepository {
@@ -19,10 +20,16 @@ object AnimeDbRepository {
             klass = AppDatabase::class.java,
             name = "Animes"
         ).build()
+
+        _newAnimeDao = _appDatabase.newAnimeDao()
+        _favoriteAnimeDao = _appDatabase.favoriteAnimeDao()
     }
+
+    fun getNewAnimesFlow(): Flow<List<NewAnime>> = _newAnimeDao.getAllNewAnimes()
 
     suspend fun getAllFavoriteAnimes() : List<FavoriteAnime>{
         try{
+            Log.i("getAllFavoriteAnimeTry", "Fikk hentet Favoritter")
             return _favoriteAnimeDao.getAllFavoriteAnimes()
         }catch (e: Exception){
             Log.d("getAllFavoriteAnimeRepository", e.toString())
@@ -60,13 +67,14 @@ object AnimeDbRepository {
         try {
             return _newAnimeDao.insertNewAnime(newAnime)
         }catch (e: Exception){
+            Log.e("insertNewAnime", "feil ved posting til db", e)
             return -1L // Databasen vil returnere -1L hvis det går galt under lagring
         }
     }
 
     suspend fun deleteNewAnimeById(id: Int) {
         try {
-            _newAnimeDao.deleteNewAnimeById(id)
+            _newAnimeDao.deleteNewAnime(id)
         } catch (e: Exception) {
             Log.e("NewAnimeRepository", "Feil ved sletting av anime med id=$id")
         }
@@ -77,6 +85,16 @@ object AnimeDbRepository {
             _newAnimeDao.updateNewAnime(newAnime)
         } catch (e: Exception) {
             Log.e("NewAnimeRepository", "Kunne ikke oppdatere anime", e)
+        }
+    }
+
+    // Trenger en getnewAnimeOnId funkjson
+    suspend fun getNewAnimeById(id: Int): NewAnime?{
+        try {
+            return _newAnimeDao.getNewAnimeById(id)
+        } catch (e: Exception) {
+            Log.e("NewAnimeRepository", "Kunne ikke hente anime med id=$id", e)
+            return null
         }
     }
 }

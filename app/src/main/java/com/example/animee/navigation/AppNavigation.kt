@@ -31,6 +31,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.animee.screens.animecreate.AnimeCreateScreen
 import com.example.animee.screens.animecreate.AnimeCreateViewModel
+import com.example.animee.screens.animecreatedetails.AnimeCreateDetailsScreen
+import com.example.animee.screens.animecreatedetails.AnimeCreateDetailsViewModel
 import com.example.animee.screens.searchanime.SearchAnimeScreen
 import com.example.animee.screens.searchanime.SearchAnimeViewModel
 
@@ -40,6 +42,7 @@ fun AppNavigation(
     showAllAnimeViewModel: ShowAllAnimeViewModel,
     searchAnimeViewModel: SearchAnimeViewModel,
     animeCreateViewModel: AnimeCreateViewModel,
+    animeCreateDetailsViewModel: AnimeCreateDetailsViewModel,
     animeDetailsViewModel: AnimeDetailsViewModel
 ){
     val navController = rememberNavController()
@@ -142,8 +145,19 @@ fun AppNavigation(
                 composable<NavRoutes.AnimeCreateRoute> {
                     AnimeCreateScreen(
                         animeCreateViewModel,
+                        navController
                     )
                 }
+                composable<NavRoutes.AnimeCreateDetailsRoute> { backstackEntery ->
+                    val args = backstackEntery.toRoute<NavRoutes.AnimeCreateDetailsRoute>()
+                    AnimeCreateDetailsScreen(
+                        animeCreateDetailsViewModel,
+                        navController,
+                        args.newAnimeId,
+
+                    )
+                }
+
                 composable<NavRoutes.AnimeDetailsRoute> { backstackEntery ->
                     val args = backstackEntery.toRoute<NavRoutes.AnimeDetailsRoute>()
                     AnimeDetailsScreen(

@@ -44,7 +44,7 @@ object AnimeAPIRepository {
 
 
     suspend fun getAnimeById(id: Int ) : AnimeApi? {
-       return try {
+        return try {
             val response = _animeService.getAnimeById(id)
 
             if (response.isSuccessful) {

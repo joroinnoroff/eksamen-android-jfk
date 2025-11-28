@@ -12,7 +12,6 @@ import kotlinx.coroutines.withContext
 class HomeViewModel : ViewModel() {
 
     private val _animes = MutableStateFlow<List<AnimeApi>>(emptyList())
-
     val animes = _animes.asStateFlow()
 
     init {
@@ -34,6 +33,4 @@ class HomeViewModel : ViewModel() {
             }
         }
     }
-
-
 }
