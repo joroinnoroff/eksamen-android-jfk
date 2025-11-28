@@ -17,7 +17,7 @@ fun NewAnimeListItem(
         ) {
             Column() {
                 Text("Id: ${newAnime.id}")
-                Text("Title: ${newAnime.name}")
+                Text("Title: ${newAnime.title}")
                 Text("Description: ${newAnime.description}")
             }
         }

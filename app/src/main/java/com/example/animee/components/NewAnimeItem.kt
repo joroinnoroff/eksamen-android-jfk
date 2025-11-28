@@ -14,7 +14,7 @@ fun NewAnimeItem(
     deleteAnime: () -> Unit
 ){
     Column {
-        Text(newAnime.name)
+        Text(newAnime.title)
         Text(newAnime.description.toString())
 
 
