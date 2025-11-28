@@ -34,6 +34,7 @@ fun AnimeCreateDetailsScreen(
                 },
                 editAnime = {updateAnime ->
                     animeCreateDetailsViewModel.updateNewAnime(updateAnime)
+                    navController.popBackStack()
                 }
             )
         }
