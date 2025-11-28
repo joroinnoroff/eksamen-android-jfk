@@ -2,6 +2,7 @@ package com.example.animee.screens.animedetails
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,7 +23,10 @@ fun AnimeDetailsScreen(
     }
 
     Column() {
-        Text("Anime detail screen")
+        Text(
+            "Anime detail screen",
+            style = MaterialTheme.typography.headlineLarge
+            )
 
 
         LazyColumn() {
