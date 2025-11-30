@@ -41,7 +41,7 @@ fun AnimeDetailsScreen(
         LazyColumn() {
             item {  anime.value?.let {
                 AnimeItem(it,
-                    goBack = { navController.popBackStack() },
+
                     isFavorited = favorites.value.contains(animeId),
                     onFavorite = { favoritesViewModel.toggleFavorite(anime.value!!) }
                 )

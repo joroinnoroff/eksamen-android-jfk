@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class FavoritesViewModel: ViewModel(){
+    //Bruk av Set for å holde Id unik, lagrer ikke duplikater
+    //bruk av Emptyset for å starte med tomt set i start - så automatisk oppdatering
     private val _favoriteIds = MutableStateFlow<Set<Int>>(emptySet())
     val favoriteIds = _favoriteIds.asStateFlow()
 
@@ -31,10 +33,11 @@ class FavoritesViewModel: ViewModel(){
             val isFav = currentFavorites.contains(anime.id)
 
             if (isFav) {
-                //remove from DB if favorited
+                //Fjerne fra DB + oppdatere current state
                 AnimeDbRepository.deleteFavoriteAnimeById(anime.id)
+                _favoriteIds.value = currentFavorites - anime.id
             } else{
-                //add to DB
+                //legge til Db + oppdatere current state
                 AnimeDbRepository.addFavoriteAnimeFromApi(anime)
                 _favoriteIds.value = currentFavorites + anime.id
             }

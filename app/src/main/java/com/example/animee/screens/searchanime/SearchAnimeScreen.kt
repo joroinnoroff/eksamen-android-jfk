@@ -20,9 +20,7 @@ import com.example.animee.screens.animedetails.AnimeDetailsViewModel
 import com.example.animee.screens.favorites.FavoritesViewModel
 
 @Composable
-fun SearchAnimeScreen(
-
-    searchAnimeViewModel: SearchAnimeViewModel) {
+fun SearchAnimeScreen(searchAnimeViewModel: SearchAnimeViewModel) {
 
     val error = searchAnimeViewModel.error.collectAsState()
     val anime = searchAnimeViewModel.anime.collectAsState()
@@ -82,7 +80,7 @@ fun SearchAnimeScreen(
 
                     isFavorited = favorites.value.contains(it.id),
                     onFavorite = { favoritesViewModel.toggleFavorite(it) },
-                    goBack = {}
+
                 )
             } ?: Text("Search to find anime")
 

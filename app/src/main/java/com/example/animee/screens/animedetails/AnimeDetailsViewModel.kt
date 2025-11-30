@@ -14,7 +14,7 @@ class AnimeDetailsViewModel() : ViewModel() {
         null
     )
     val anime = _animeDetail.asStateFlow()
-    //favorite state
+
 
 
     fun setAnimeDetails(id: Int) {
