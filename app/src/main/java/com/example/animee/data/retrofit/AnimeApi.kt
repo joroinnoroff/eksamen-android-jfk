@@ -9,6 +9,7 @@ data class AnimeResponse(
 data class AnimeSingleResponse(
     val data: AnimeApi
 )
+
 data class AnimeApi(
     @SerializedName("mal_id")
     val id: Int,
