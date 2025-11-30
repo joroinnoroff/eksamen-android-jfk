@@ -56,6 +56,17 @@ object AnimeDbRepository {
         }
     }
 
+
+    suspend fun deleteFavoriteAnimeById(id: Int) {
+        try {
+            withContext(Dispatchers.IO) {
+                _favoriteAnimeDao.deleteFavoriteAnime(id)
+            }
+        } catch (e:Exception) {
+            Log.e("FavoriteDeleteRepository", "Kunne ikke slette favoritt", e)
+        }
+    }
+
     suspend fun insertNewAnime(newAnime: NewAnime) : Long{
         try {
             return _newAnimeDao.insertNewAnime(newAnime)

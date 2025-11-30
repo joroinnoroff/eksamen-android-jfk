@@ -17,6 +17,8 @@ fun AnimeDetailsScreen(
     animeId: Int
 ) {
     val anime = animeDetailsViewModel.anime.collectAsState()
+    val isFavorited = animeDetailsViewModel.isFavorite.collectAsState()
+
 
     LaunchedEffect(animeId) {
         animeDetailsViewModel.setAnimeDetails(animeId)
@@ -32,9 +34,9 @@ fun AnimeDetailsScreen(
         LazyColumn() {
             item {  anime.value?.let {
                 AnimeItem(it,
-                    goBack = {
-                        navController.popBackStack()
-                    }
+                    goBack = { navController.popBackStack() },
+                    isFavorited = isFavorited.value,
+                    onFavorite = { animeDetailsViewModel.addToFavorites() }
                 )
             } }
         }

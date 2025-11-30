@@ -72,7 +72,7 @@ fun SearchAnimeScreen(
             }
 
             anime.value?.let {
-                AnimeItem(it)
+                AnimeItem(it, isFavorited = false, onFavorite = {})
             } ?: Text("Search to find anime")
 
         }
