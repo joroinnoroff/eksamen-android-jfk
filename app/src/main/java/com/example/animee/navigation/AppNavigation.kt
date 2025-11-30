@@ -140,7 +140,9 @@ fun AppNavigation(
                 }
                 composable<NavRoutes.SearchAnimeRoute> {
                     SearchAnimeScreen(
+                        animeDetailsViewModel,
                         searchAnimeViewModel,
+
                     )
                 }
                 composable<NavRoutes.AnimeCreateRoute> {

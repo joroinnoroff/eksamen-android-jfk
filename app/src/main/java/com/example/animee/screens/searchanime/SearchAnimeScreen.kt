@@ -15,15 +15,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.animee.components.AnimeItem
+import com.example.animee.screens.animedetails.AnimeDetailsViewModel
 
 @Composable
 fun SearchAnimeScreen(
+    animeDetailsViewModel: AnimeDetailsViewModel,
     searchAnimeViewModel: SearchAnimeViewModel) {
 
     val error = searchAnimeViewModel.error.collectAsState()
     val anime = searchAnimeViewModel.anime.collectAsState()
     var id by remember { mutableStateOf("")
     }
+    val isFavorited = animeDetailsViewModel.isFavorite.collectAsState()
 
 
     LazyColumn (
@@ -72,7 +75,12 @@ fun SearchAnimeScreen(
             }
 
             anime.value?.let {
-                AnimeItem(it, isFavorited = false, onFavorite = {})
+                AnimeItem(it,
+
+                    isFavorited = isFavorited.value,
+                    onFavorite = { animeDetailsViewModel.addToFavorites() },
+                    goBack = {}
+                )
             } ?: Text("Search to find anime")
 
         }
