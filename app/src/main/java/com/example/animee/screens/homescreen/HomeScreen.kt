@@ -18,7 +18,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.animee.components.SimpleAnimeItem
 import com.example.animee.components.SimpleFavoriteAnimeItem
@@ -44,7 +46,7 @@ fun HomeScreen(homeViewModel: HomeViewModel){
     LazyColumn() {
         item {
             Text(  "My Favorites",
-                style = MaterialTheme.typography.headlineLarge,
+                fontSize = 28.sp,
                 modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp)
             )
 
@@ -81,8 +83,8 @@ fun HomeScreen(homeViewModel: HomeViewModel){
         }
 
         item{
-            Text("By Score",
-                style = MaterialTheme.typography.headlineMedium,
+            Text("Top 5 By Score",
+                 fontSize = 28.sp,
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp, 8.dp, 16.dp)
             )
 
@@ -109,8 +111,8 @@ fun HomeScreen(homeViewModel: HomeViewModel){
             )
         }
         item {
-            Text("By Popularity",
-                style = MaterialTheme.typography.headlineMedium,
+            Text("Top 5 By Popularity",
+                fontSize = 28.sp,
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp, 8.dp, 16.dp))
 
             Box(modifier = Modifier.fillMaxWidth()){

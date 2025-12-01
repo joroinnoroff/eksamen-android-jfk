@@ -11,6 +11,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.animee.components.AnimeItem
@@ -36,10 +37,7 @@ fun AnimeDetailsScreen(
         modifier = Modifier.padding(36.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            "Anime detail screen",
-            style = MaterialTheme.typography.headlineLarge
-            )
+
 
         LazyColumn() {
             item {  anime.value?.let {
@@ -51,5 +49,6 @@ fun AnimeDetailsScreen(
                 }
             }
         }
+
     }
 }
