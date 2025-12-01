@@ -65,8 +65,11 @@ fun AnimeCreateScreen(
             onClick = {
                 if (title.isNotEmpty() && description.isNotEmpty()) {
                     scope.launch {
-                        val insertedAnime = animeCreateViewModel.insertNewAnime(NewAnime(title = title, description = description)
+                         animeCreateViewModel.insertNewAnime(
+                            NewAnime(title = title, description = description)
                         )
+                        title = ""
+                        description =""
                     }
                 }
             }
