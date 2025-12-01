@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.animee.components.AnimeItem
 import com.example.animee.components.SimpleAnimeItem
+import com.example.animee.components.SimpleFavoriteAnimeItem
 import com.example.animee.screens.favorites.FavoritesViewModel
 
 @Composable
@@ -31,7 +32,7 @@ fun HomeScreen(homeViewModel: HomeViewModel){
 
     // val favoritesAnime
     val favoritesViewModel:  FavoritesViewModel = viewModel()
-    val favorites = favoritesViewModel.favoriteIds.collectAsState()
+    val favoritesAnimes by favoritesViewModel.favoriteAnimes.collectAsState()
 
 
 
@@ -41,10 +42,14 @@ fun HomeScreen(homeViewModel: HomeViewModel){
     LazyColumn() {
 
         item {
+            Text(  "Favorites")
             LazyRow(
-
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(horizontal = 8.dp)
             ) {
-
+                items(favoritesAnimes) {anime ->
+                    SimpleFavoriteAnimeItem(anime)
+                }
             }
         }
 

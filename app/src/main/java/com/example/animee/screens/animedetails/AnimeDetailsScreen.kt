@@ -23,7 +23,7 @@ fun AnimeDetailsScreen(
 
 
     val favoritesViewModel:  FavoritesViewModel = viewModel()
-    val favorites = favoritesViewModel.favoriteIds.collectAsState()
+    val favorites = favoritesViewModel.favoriteAnimes.collectAsState()
 
     val anime = animeDetailsViewModel.anime.collectAsState()
 
@@ -41,8 +41,8 @@ fun AnimeDetailsScreen(
         LazyColumn() {
             item {  anime.value?.let {
                 AnimeItem(it,
-
-                    isFavorited = favorites.value.contains(animeId),
+                    //sende id til anime med it.id
+                    isFavorited = favorites.value.any {fav -> fav.id == it.id},
                     onFavorite = { favoritesViewModel.toggleFavorite(anime.value!!) }
                 )
             } }
