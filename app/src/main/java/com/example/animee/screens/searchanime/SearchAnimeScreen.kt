@@ -78,7 +78,7 @@ fun SearchAnimeScreen(searchAnimeViewModel: SearchAnimeViewModel) {
             anime.value?.let {
                 AnimeItem(it,
 
-                    //sende id til anime med it.id
+                    //matcher favoriter mot anime id
                     isFavorited = favorites.value.any {fav -> fav.id == it.id},
                     onFavorite = { favoritesViewModel.toggleFavorite(it) },
 

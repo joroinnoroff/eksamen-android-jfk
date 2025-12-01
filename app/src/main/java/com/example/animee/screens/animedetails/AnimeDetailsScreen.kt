@@ -41,7 +41,7 @@ fun AnimeDetailsScreen(
         LazyColumn() {
             item {  anime.value?.let {
                 AnimeItem(it,
-                    //sende id til anime med it.id
+                    //matcher favoriter mot anime id
                     isFavorited = favorites.value.any {fav -> fav.id == it.id},
                     onFavorite = { favoritesViewModel.toggleFavorite(anime.value!!) }
                 )

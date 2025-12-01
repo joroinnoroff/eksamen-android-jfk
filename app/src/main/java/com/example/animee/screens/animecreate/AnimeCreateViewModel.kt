@@ -27,11 +27,4 @@ class AnimeCreateViewModel: ViewModel() {
         }
     }
 
-
-
-
-
-
-
-
 }

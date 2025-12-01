@@ -20,6 +20,7 @@ import com.example.animee.data.retrofit.AnimeApi
 fun SimpleAnimeItem(anime: AnimeApi){
     Box(modifier = Modifier
         .width(300.dp)
+        .height(220.dp)
         .clip(RoundedCornerShape(16.dp))
         ){
             AsyncImage(
