@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
@@ -24,7 +23,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -80,7 +78,7 @@ fun AppNavigation(
                         activeItem = 1
                         navController.navigate(NavRoutes.AllAnimeRoute)
                     },
-                    label = { Text("All Animes") },
+                    label = { Text("All Anime") },
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Face,
@@ -160,7 +158,6 @@ fun AppNavigation(
 
                     )
                 }
-
                 composable<NavRoutes.AnimeDetailsRoute> { backstackEntery ->
                     val args = backstackEntery.toRoute<NavRoutes.AnimeDetailsRoute>()
                     AnimeDetailsScreen(

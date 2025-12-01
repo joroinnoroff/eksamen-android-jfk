@@ -22,9 +22,7 @@ object AnimeAPIRepository {
             GsonConverterFactory.create()
         ).build()
 
-
     private val _animeService = _retrofit.create(AnimeService::class.java)
-
 
     suspend fun getAllAnimes() : AnimeResponse? {
         return try {
@@ -39,9 +37,6 @@ object AnimeAPIRepository {
             return null
         }
     }
-
-
-
 
     suspend fun getAnimeById(id: Int ) : AnimeApi? {
         return try {

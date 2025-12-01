@@ -13,7 +13,6 @@ class FavoritesViewModel: ViewModel(){
     private val _favoriteAnimes = MutableStateFlow<List<FavoriteAnime>>(emptyList())
     val favoriteAnimes = _favoriteAnimes.asStateFlow()
 
-
     init {
         loadFavorites()
     }
@@ -50,9 +49,6 @@ class FavoritesViewModel: ViewModel(){
             _favoriteAnimes.value = currentFavorites
         }
     }
-
-
-
 }
 
 

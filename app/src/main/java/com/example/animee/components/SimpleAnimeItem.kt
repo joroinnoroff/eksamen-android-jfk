@@ -1,7 +1,6 @@
 package com.example.animee.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,11 +21,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,11 +43,9 @@ fun SimpleAnimeItem(anime: AnimeApi){
                     .width(250.dp),
                 contentScale = ContentScale.Crop
             )
-
         Box(modifier = Modifier
             .matchParentSize()
             .background(Color.Black.copy(0.3f)))
-
         Box(
             modifier = Modifier.fillMaxSize()
                 .padding(16.dp),
@@ -86,5 +80,5 @@ fun SimpleAnimeItem(anime: AnimeApi){
                 }
             }
         }
-   }
+    }
 }

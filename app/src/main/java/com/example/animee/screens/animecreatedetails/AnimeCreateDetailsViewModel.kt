@@ -31,6 +31,7 @@ class AnimeCreateDetailsViewModel : ViewModel() {
 
         }
     }
+
     fun deleteNewAnime(newAnimeId: Int, onDone: () ->Unit) {
         viewModelScope.launch {
             AnimeDbRepository.deleteNewAnimeById(newAnimeId)
@@ -38,5 +39,4 @@ class AnimeCreateDetailsViewModel : ViewModel() {
             onDone()
         }
     }
-
 }

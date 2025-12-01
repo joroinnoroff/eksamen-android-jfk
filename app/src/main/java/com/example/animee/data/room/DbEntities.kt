@@ -1,7 +1,7 @@
 package com.example.animee.data.room
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
 
 @Entity(tableName = "favorite_anime")
 data class FavoriteAnime(
@@ -12,7 +12,6 @@ data class FavoriteAnime(
     val score: Double?,
     val imageUrl: String
 )
-
 
 @Entity(tableName = "new_anime")
 data class NewAnime(

@@ -40,9 +40,6 @@ fun NewAnimeListItem(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-
-
-
             ) {
                 Row() {
                     Text("Id: ${newAnime.id}")
@@ -56,9 +53,7 @@ fun NewAnimeListItem(
 
                 }
                 Text("Title: ${newAnime.title}")
-
             }
         }
-
 
 }

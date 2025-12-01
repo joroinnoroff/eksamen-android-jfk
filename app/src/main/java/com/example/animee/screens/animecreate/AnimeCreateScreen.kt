@@ -1,25 +1,11 @@
 package com.example.animee.screens.animecreate
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowColumn
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -37,7 +23,6 @@ import com.example.animee.components.NewAnimeListItem
 import com.example.animee.data.room.NewAnime
 import com.example.animee.navigation.NavRoutes
 import kotlinx.coroutines.launch
-
 
 @Composable
 
@@ -58,23 +43,22 @@ fun AnimeCreateScreen(
     val scope = rememberCoroutineScope()
 
     Column(
-        modifier = Modifier.padding(36.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(36.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Ny anime",
-            style = MaterialTheme.typography.headlineLarge)
 
         TextField(
             value = title,
             onValueChange = { title = it },
             label = { Text("Title") }
         )
+
         TextField(
             value = description,
             onValueChange = { description = it },
             label = { Text("Description") }
         )
-
-
 
     //oppretter anime til database + id til detailsskjerm
         Button(
@@ -83,7 +67,6 @@ fun AnimeCreateScreen(
                     scope.launch {
                         val insertedAnime = animeCreateViewModel.insertNewAnime(NewAnime(title = title, description = description)
                         )
-                        navController.navigate(NavRoutes.AnimeCreateDetailsRoute(insertedAnime.id))
                     }
                 }
             }
@@ -92,12 +75,7 @@ fun AnimeCreateScreen(
         }
 
         if (newAnimes.value.count() > 0) {
-            LazyColumn (
-
-
-
-
-            ) {
+            LazyColumn () {
                 items(newAnimes.value,
                     key ={it.id}) { anime ->
                     val animeId = anime.id
@@ -106,10 +84,7 @@ fun AnimeCreateScreen(
                             editAnime = {
                                 navController.navigate(NavRoutes.AnimeCreateDetailsRoute(animeId))
                             }
-
                         ) // END NewAnimeListItem
-
-
                 }
             }
         } else {

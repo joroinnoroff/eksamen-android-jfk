@@ -3,7 +3,6 @@ package com.example.animee.screens.animedetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.animee.data.retrofit.AnimeApi
-import com.example.animee.data.room.AnimeDbRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -15,19 +14,10 @@ class AnimeDetailsViewModel() : ViewModel() {
     )
     val anime = _animeDetail.asStateFlow()
 
-
-
     fun setAnimeDetails(id: Int) {
         viewModelScope.launch {
            val animeId = AnimeAPIRepository.getAnimeById(id)
             _animeDetail.value = animeId
-
-
         }
     }
-
-
-
-
-
 }

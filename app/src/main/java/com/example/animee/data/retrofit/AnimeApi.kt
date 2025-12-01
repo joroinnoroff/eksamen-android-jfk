@@ -1,6 +1,5 @@
 package com.example.animee.data.retrofit
 
-import android.R
 import com.google.gson.annotations.SerializedName
 
 data class AnimeResponse(
@@ -22,7 +21,6 @@ data class AnimeApi(
     val synopsis: String,
     val images: Images
 )
-
 
 data class Images(
     val webp: ImagesData

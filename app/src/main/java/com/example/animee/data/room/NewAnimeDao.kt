@@ -7,10 +7,8 @@ import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
-
 @Dao
 interface NewAnimeDao {
-
     @Query("SELECT * FROM new_anime")
     fun getAllNewAnimes(): Flow<List<NewAnime>>
 

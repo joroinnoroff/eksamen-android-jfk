@@ -11,7 +11,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.animee.components.AnimeItem
@@ -23,10 +22,8 @@ fun AnimeDetailsScreen(
     navController: NavController,
     animeId: Int
 ) {
+    val favoritesViewModel: FavoritesViewModel = viewModel()
 
-
-
-    val favoritesViewModel:  FavoritesViewModel = viewModel()
     val favorites = favoritesViewModel.favoriteAnimes.collectAsState()
 
     val anime = animeDetailsViewModel.anime.collectAsState()
@@ -44,15 +41,15 @@ fun AnimeDetailsScreen(
             style = MaterialTheme.typography.headlineLarge
             )
 
-
         LazyColumn() {
             item {  anime.value?.let {
                 AnimeItem(it,
-                    //matcher favoriter mot anime id
+                    //matcher favorit anime id mot anime id & toggle med viewmodel
                     isFavorited = favorites.value.any {fav -> fav.id == it.id},
                     onFavorite = { favoritesViewModel.toggleFavorite(anime.value!!) }
-                )
-            } }
+                    )
+                }
+            }
         }
     }
 }
