@@ -14,19 +14,13 @@ import com.example.animee.data.retrofit.AnimeApi
 @Composable
 fun AnimeItem(
     anime: AnimeApi,
-    goBack: (() -> Unit)? = null,
+
     isFavorited: Boolean,
     onFavorite: (() -> Unit) ? = null
 ){
     Column {
 
-        if(goBack != null){
-            Button(
-                goBack
-            ) {
-                Text("Tilbake")
-            }
-        }
+
         Text(anime.englishTitle)
         Text(anime.japaneseTitle)
         AsyncImage(

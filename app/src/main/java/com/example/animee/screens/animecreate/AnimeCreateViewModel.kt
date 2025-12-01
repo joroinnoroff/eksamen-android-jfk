@@ -27,11 +27,7 @@ class AnimeCreateViewModel: ViewModel() {
         }
     }
 
-    fun deleteNewAnime(id: Int) {
-        viewModelScope.launch {
-            AnimeDbRepository.deleteNewAnimeById(id)
-        }
-    }
+
 
 
 

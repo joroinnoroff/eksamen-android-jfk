@@ -22,6 +22,11 @@ data class AnimeApi(
     val synopsis: String,
     val images: Images
 )
+data class searchAnime(
+    val anime: AnimeApi? = null,
+    val error: String? = null,
+    val isLoading: Boolean = false,
+)
 
 data class Images(
     val webp: ImagesData

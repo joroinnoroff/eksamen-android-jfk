@@ -7,8 +7,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.animee.components.AnimeItem
+import com.example.animee.screens.favorites.FavoritesViewModel
 
 @Composable
 fun AnimeDetailsScreen(
@@ -16,9 +19,13 @@ fun AnimeDetailsScreen(
     navController: NavController,
     animeId: Int
 ) {
-    val anime = animeDetailsViewModel.anime.collectAsState()
-    val isFavorited = animeDetailsViewModel.isFavorite.collectAsState()
 
+
+
+    val favoritesViewModel:  FavoritesViewModel = viewModel()
+    val favorites = favoritesViewModel.favoriteAnimes.collectAsState()
+
+    val anime = animeDetailsViewModel.anime.collectAsState()
 
     LaunchedEffect(animeId) {
         animeDetailsViewModel.setAnimeDetails(animeId)
@@ -34,9 +41,9 @@ fun AnimeDetailsScreen(
         LazyColumn() {
             item {  anime.value?.let {
                 AnimeItem(it,
-                    goBack = { navController.popBackStack() },
-                    isFavorited = isFavorited.value,
-                    onFavorite = { animeDetailsViewModel.addToFavorites() }
+                    //sende id til anime med it.id
+                    isFavorited = favorites.value.any {fav -> fav.id == it.id},
+                    onFavorite = { favoritesViewModel.toggleFavorite(anime.value!!) }
                 )
             } }
         }
