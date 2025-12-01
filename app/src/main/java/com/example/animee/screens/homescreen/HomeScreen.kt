@@ -68,8 +68,8 @@ fun HomeScreen(homeViewModel: HomeViewModel){
                       flingBehavior = rememberSnapFlingBehavior(
                           lazyListState = favoriteListState
                       ),
-                      horizontalArrangement = Arrangement.spacedBy(16.dp),
-                      contentPadding = PaddingValues(horizontal = 16.dp),
+                      horizontalArrangement = Arrangement.spacedBy(36.dp),
+                      contentPadding = PaddingValues(horizontal = 36.dp),
                       modifier = Modifier.align(Alignment.Center)
                   ) {
                       items(favoritesAnimes) {anime ->
@@ -78,22 +78,17 @@ fun HomeScreen(homeViewModel: HomeViewModel){
                   }
               }
             }
-
         }
         //end
-
         item {
             Spacer(
                 modifier = Modifier.padding(top = 36.dp)
             )
         }
-
-
-        item {
+        item{
             Text("By Score",
-                style = MaterialTheme.typography.headlineMedium
-
-            ,modifier = Modifier.padding(start = 16.dp, top = 16.dp, 8.dp, 16.dp)
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, 8.dp, 16.dp)
             )
 
             Box(modifier = Modifier.fillMaxWidth()) {
@@ -118,7 +113,6 @@ fun HomeScreen(homeViewModel: HomeViewModel){
                 modifier = Modifier.padding(top = 26.dp)
             )
         }
-
         item {
             Text("By Popularity",
                 style = MaterialTheme.typography.headlineMedium,

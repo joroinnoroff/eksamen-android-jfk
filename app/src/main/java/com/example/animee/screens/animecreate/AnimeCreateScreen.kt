@@ -29,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -57,8 +58,8 @@ fun AnimeCreateScreen(
     val scope = rememberCoroutineScope()
 
     Column(
-
-    ) {
+        modifier = Modifier.padding(36.dp),
+        horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Ny anime",
             style = MaterialTheme.typography.headlineLarge)
 
