@@ -9,12 +9,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
+
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -38,12 +38,12 @@ fun SimpleFavoriteAnimeItem(anime: FavoriteAnime){
                 .background(Color.Black.copy(alpha = 0.8f)) // sort transparent overlay
                 .padding(3.dp)
         ){
-            Column() {
+            Column {
                 Text(anime.englishTitle.toString(),
                     style = MaterialTheme.typography.headlineSmall,
                     color = Color.White
                  )
-                Row() {
+                Row {
                     Text(anime.score.toString(),
                         style = MaterialTheme.typography.labelSmall,
                         color = Color.White)

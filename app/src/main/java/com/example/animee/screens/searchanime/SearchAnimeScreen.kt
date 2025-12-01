@@ -32,7 +32,7 @@ fun SearchAnimeScreen(searchAnimeViewModel: SearchAnimeViewModel) {
 
     LazyColumn (
 
-        modifier = Modifier.padding(34.dp)
+        modifier = Modifier.padding(36.dp)
     ) {
         item {
             Text("Search anime")

@@ -17,9 +17,10 @@ class AnimeCreateDetailsViewModel : ViewModel() {
 
     val newAnime = _newAnimeDetails.asStateFlow()
 
-    fun setNewAnime(newAnimeId: Int) {
+    fun setNewAnime(id: Int) {
         viewModelScope.launch {
-            _newAnimeDetails.value = AnimeDbRepository.getNewAnimeById(newAnimeId)
+            val animeFromDb = AnimeDbRepository.getNewAnimeById(id)
+            _newAnimeDetails.value = animeFromDb
         }
     }
 

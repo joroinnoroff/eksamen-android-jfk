@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
@@ -79,7 +80,7 @@ fun AppNavigation(
                         activeItem = 1
                         navController.navigate(NavRoutes.AllAnimeRoute)
                     },
-                    label = { Text("All Anime") },
+                    label = { Text("All Animes") },
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Face,
@@ -94,7 +95,7 @@ fun AppNavigation(
                         activeItem = 2
                         navController.navigate(NavRoutes.SearchAnimeRoute)
                     },
-                    label = { Text("Search Anime") },
+                    label = { Text("Search") },
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Search,
@@ -109,10 +110,10 @@ fun AppNavigation(
                         activeItem = 3
                         navController.navigate(NavRoutes.AnimeCreateRoute)
                     },
-                    label = { Text("Create new Anime") },
+                    label = { Text("Create") },
                     icon = {
                         Icon(
-                            imageVector = Icons.Default.Create,
+                            imageVector = Icons.Default.Add,
                             null
                         )
                     }

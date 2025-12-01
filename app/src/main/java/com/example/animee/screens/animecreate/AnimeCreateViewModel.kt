@@ -20,11 +20,10 @@ class AnimeCreateViewModel: ViewModel() {
             SharingStarted.WhileSubscribed(5000),
             emptyList()
         )
-
-    fun insertNewAnime(newAnime: NewAnime){
-        viewModelScope.launch {
-            AnimeDbRepository.insertNewAnime(newAnime)
-        }
+    // hente ut Id ved auto generert Id ved insert
+    suspend fun insertNewAnime(newAnime: NewAnime): NewAnime {
+       val id = AnimeDbRepository.insertNewAnime(newAnime).toInt()
+        return newAnime.copy(id = id)
     }
 
 }

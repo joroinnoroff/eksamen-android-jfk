@@ -1,11 +1,14 @@
 package com.example.animee.screens.showallanime
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.animee.components.AnimeListItem
 import com.example.animee.navigation.NavRoutes
@@ -17,7 +20,9 @@ fun ShowAllAnimeScreen(
 ) {
     val animes = showAllAnimeViewModel.animes.collectAsState()
 
-    Column() {
+    Column(
+        modifier = Modifier.padding(36.dp)
+    ) {
         Text("Show all screen")
         LazyColumn() {
             items(animes.value) {anime ->

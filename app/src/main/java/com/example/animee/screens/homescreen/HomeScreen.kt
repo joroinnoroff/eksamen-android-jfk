@@ -31,7 +31,6 @@ import com.example.animee.screens.favorites.FavoritesViewModel
 @Composable
 fun HomeScreen(homeViewModel: HomeViewModel){
 
-
     //Sorterer baser på popularitet, score som vi henter fra apiet
     val allAnimes by homeViewModel.animes.collectAsState()
     val allAnimesByScore = allAnimes.sortedByDescending { it.score }
@@ -46,9 +45,6 @@ fun HomeScreen(homeViewModel: HomeViewModel){
     val animesListByScoreState = rememberLazyListState()
     val animesListByPoplularityState = rememberLazyListState()
 
-
-
-
     LazyColumn(
 
     ) {
@@ -60,20 +56,27 @@ fun HomeScreen(homeViewModel: HomeViewModel){
             )
 
             Box(modifier = Modifier.fillMaxWidth()) {
-                LazyRow(
-                    //snap til center på swipe
-                    state = favoriteListState,
-                    flingBehavior = rememberSnapFlingBehavior(
-                        lazyListState = favoriteListState
-                    ),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                    modifier = Modifier.align(Alignment.Center)
-                ) {
-                    items(favoritesAnimes) {anime ->
-                        SimpleFavoriteAnimeItem(anime)
-                    }
-                }
+              if (favoritesAnimes.isEmpty()){
+                  //Om ingen favoriter
+                  Text(
+                      "No favorites yet"
+                  )
+              } else {
+                  LazyRow(
+                      //snap til center på swipe
+                      state = favoriteListState,
+                      flingBehavior = rememberSnapFlingBehavior(
+                          lazyListState = favoriteListState
+                      ),
+                      horizontalArrangement = Arrangement.spacedBy(16.dp),
+                      contentPadding = PaddingValues(horizontal = 16.dp),
+                      modifier = Modifier.align(Alignment.Center)
+                  ) {
+                      items(favoritesAnimes) {anime ->
+                          SimpleFavoriteAnimeItem(anime)
+                      }
+                  }
+              }
             }
 
         }
@@ -144,8 +147,6 @@ fun HomeScreen(homeViewModel: HomeViewModel){
             )
         }
         //end
-
-
 
     }
 }
