@@ -35,7 +35,7 @@ fun SimpleFavoriteAnimeItem(anime: FavoriteAnime){
         )
         Box(
             modifier = Modifier.fillMaxHeight()
-                .background(Color.Black.copy(alpha = 0.8f)) // transparent overlay
+                .background(Color.Black.copy(alpha = 0.8f)) // sort transparent overlay
                 .padding(3.dp)
         ){
             Column() {
